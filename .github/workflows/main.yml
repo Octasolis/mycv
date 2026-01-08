@@ -21,7 +21,7 @@ jobs:
       - name: npm install
         run: npm ci
 
-      # Se comenta el test temporalmente para evitar el error de Firestore y permitir el despliegue
+      # Se comenta el paso de test para ignorar el error de Firestore
       # - name: test
       #   run: |
       #     npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
@@ -37,7 +37,7 @@ jobs:
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
 
       - name: Download and run the Docker base image
-        # Se agrega --platform linux/amd64 para compatibilidad con el servidor de despliegue
+        # --platform linux/amd64 corrige el error de "invalid platform" en el servidor
         run: docker run -d --platform linux/amd64 --name http_base httpd
 
       - name: copy model to the Docker image
