@@ -1,0 +1,9 @@
+<div *ngIf="header">
+  <h2>{{header.name}}</h2>
+  <p>{{header.goalLife}}</p>
+  <img *ngIf="header.photoUrl" [src]="header.photoUrl" width="200" height="200" alt="Profile photo">
+  <p>Email: {{header.email}}</p>
+  <p>Teléfono: {{header.phoneNumber}}</p>
+  <p>Ubicación: {{header.location}}</p>
+  <p>Redes: {{header.socialNetwork}}</p>
+</div>
